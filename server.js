@@ -1,7 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
+const MongoClient = require('mongodb').MongoClient
 
+// Connect to Database
+MongoClient.connect('mongodb-connection-string', (err, client) => {
+    // ... do something here
+})
+
+// MIDDLEWARE
 // Make sure you place body-parser before your CRUD handlers!
 app.use(bodyParser.urlencoded({ extended: true }))
 
