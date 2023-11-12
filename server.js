@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
     // Mine: C:\Users\eengl\OneDrive\Documents\htdocs\bootcamp\zellwk-com-crud\starwars2023
 })
 
+app.post('/quotes', (req, res) => {
+    console.log('Helloooooooooooooo!')
+})
+
 
 app.listen(3000, function () {
     console.log(`__dirname is: ${__dirname}`)
