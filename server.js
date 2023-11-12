@@ -11,6 +11,8 @@ const MongoClient = require('mongodb').MongoClient
 MongoClient.connect(connectionString)
 .then(client => {
     console.log('Connected to Database')
+    const db = client.db('starwars2023')
+    const quotesCollection = db.collection('quotes')
 
     // MIDDLEWARE
     // Make sure you place body-parser before your CRUD handlers!
@@ -27,7 +29,14 @@ MongoClient.connect(connectionString)
 
     app.post('/quotes', (req, res) => {
         //console.log('Helloooooooooooooo!')
-        console.log(req.body)
+        //console.log(req.body)
+        quotesCollection
+        .insertOne(req.body)
+        .then(result => {
+            //console.log(result)
+            res.redirect('/')
+        })
+        .catch(error => console.error(error))
     })
 
 
